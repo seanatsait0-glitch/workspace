@@ -1,0 +1,149 @@
+###  Translation from RTF performed by UnRTF, version 0.21.10 
+### font table contains 3 fonts total
+
+-----------------
+Introduction
+In this project, you'll design and impment a networked client-server application using both UDP and TCP sockets. Youll test your application in an emulated environment and reflect on how each transport-layer protocol impacts reliability, ordering, and performance.
+This project is split into two phases:
+ Phase 1  Implementing a Client-Server ApplicationIn this phase, youll design and implement client-server applications using UDP and TCP. Youll also compare protocol behaviour and reflect on your implementation.
+ Phase 2  Securing Your Client-Server ApplicationIn this phase, youll modify your TCP implementation to support secure communication using TLS.
+
+
+
+Instructions
+Notes
+ You may work individually or in pairs.
+ Pairs: One laptop acts as the client, the other as the server.
+ Individually: Run both components on one system or across virtual machines.
+ Estimated time: 68 hours. Class time may be provided to work on this project.
+ Use Python, Java, C++ or a language of your choice.
+ Use AI
+ Emulated environments such as Eve-NG, CML, or GNS3 are recommended but not required.
+ Your instructor may pick teams at random for a Q&A or spot check on your code. 
+
+Part A: Socket Programming with UDP
+In this section, you will write a simple client-server application. Refer to section 2.7.1 in your textbook for a Python code snippet.
+1 Use the network topology below as a reference. You can implement the topology in an emulation environment such as Eve-NG, CML or GNS3. Fig 1. Network topology for socket programming© 2025, Southern Alberta Institute of Technology 
+2 Choose one of the following applications to build:
+ Echo App: Client sends a message and the server returns it.
+ Data Checker: Client sends a number and the server returns whether its even or odd.
+3 Set up your UDP client-side sockets.
+a Import the modules relevant to your application development and socket programming.
+b Define the server IP and port addresses that the client connects to.
+c Create a client-side UDP socket.
+d Get user input to send to the server. Note:    You can pass the data as an argument to the application or prompt the user to enter a message.
+e Receive the echoed message and display it on the screen.
+f Implement an exception to gracefully close the application or prevent the client from blocking indefinitely.
+g Close the socket to release resources.
+h Run a completed code from a command prompt or convert your application to an .exe file using PyInstaller.
+4 Set up UDP server-side sockets.
+a Import modules relevant to your application development and socket programming. 
+b Define the server IP and port addresses that the client connects to.
+c Create a server side UDP socket.
+d Bind the socket to the address and port.
+5 Receive data from the client.
+a Wait for and receive the incoming UDP packet.
+b Specify the buffer size (in bytes) to limit the maximum amount of data received in a single call.
+c Process the input and send a response.
+d Close the socket to release the port and system resources.
+6 Use Wireshark to capture UDP traffic between the client and the server. Capture the following information for your reflection in Part C:
+a Take a screenshot.
+b Identify header fields (e.g., source port, destination port).
+c Briefly explain the message flow.
+Part B: Socket Programming with TCP
+In this section, youll re-implement your client-server application using TCP sockets. You'll explore how TCP handles connection setup, reliability, and ordered delivery, and then compare this to your UDP implementation.
+1 Set up your TCP client-side sockets
+a Import modules relevant to your application development and socket programming.
+b Define the server IP and port addresses that the client connects to.
+c Get user input to send to the server. Note:    You can pass the data as an argument to the application or prompt the user to enter a message.
+d Receive a reply from the server and display it on the screen.
+e Close the TCP socket to release resources, including the TCP connection between the client and server.Note: Implement exceptions as needed.
+2 Implement the code on the server.
+a Set up a listening socket.
+b Accept client connections.
+c Process input and send response.
+d  Handle disconnects.
+e Close the connection.Note: Implement exceptions as needed.
+3 Use Wireshark to capture TCP traffic. Capture the following information for your reflection in Part C:
+a Take a screenshot.
+b Identify key TCP fields (e.g., flags, sequence number).
+c Briefly describe differences in reliability and flow control.
+Part C: Reflection
+In this section, youll reflect on your implementation and compare UDP and TCP based on your experience.
+1 Answer the following questions in a short (one to two pages) summary or annotated notebook in Word or PDF format:
+1 How do UDP and TCP differ in socket creation and setup?
+2 How do they handle message exchange and delivery?
+3 What debugging or testing challenges did you encounter?
+4 Based on your experience, what are the trade-offs between using TCP and UDP?
+5 What basic security risks are present in your implementation? How might you begin to address them in Phase 2?
+2 Include the following items with your submission:
+ At least one screenshot from Wireshark (UDP) and one from Wireshark (TCP).
+ Clear references to your own code or console output.
+
+Submission
+1 Upload your code (client and server for both protocols) to GitHub.
+2 Submit the following to Brightspace:
+ Link to your GitHub repository
+ Reflection document (Word or PDF)
+ Wireshark screenshots
+3 Check the course calendar for the due date. 
+Introduction
+In  Project: Phase 1  Building Client-Server Applications with Sockets, you implemented and tested a networked client-server application using UDP and TCP sockets. You also observed that communication between the client and server was transmitted in clear text, making it vulnerable to interception.
+In this phase, youll extend your TCP implementation to support secure communication using TLS (Transport Layer Security), exploring how TLS builds on TCP to provide encryption, authentication and message integrity.
+
+
+Instructions
+Notes
+ You may work individually or in pairs.
+ In pairs: One laptop acts as the client, the other as the server.
+ Individually: Run both components on one system or across virtual machines.
+ Estimated time: 68 hours. Class time may be provided.
+ Use Python, Java, C++, or a language of your choice.
+ USE AI
+ Emulated environments such as Eve-NG, CML or GNS3 are recommended but not required.
+ Your instructor may select teams for a spot check or code review.
+Part A: Socket Programming with TLS
+In this section, youll re-implement your TCP client-server application using TLS sockets. Youll then explore how TLS handles connection setup to establish secure channels and compare this to your TCP implementation.
+
+Fig 1: TLS Socket Programing Lab Setup© 2025, Southern Alberta Institute of Technology 
+Topology: Use the same network setup from Phase 1 or an emulation environment (e.g., virtual Linux machines). You may deploy a Certificate Authority (CA) or use a self-signed certificate.
+1 Set up a certificate.
+a Ensure you have a server.crt from Lab - OpenSSL and TLS for Secure Communication. If not, generate a self-signed certificate using OpenSSL, as shown in the lab.
+2 Implement a TLS client.
+a Import modules relevant to your application development and socket programming.
+b Define the server IP and port addresses that the client connects to.
+c Wrap your TCP socket with TLS context.
+d Prompt for and then send user input. Note: You can pass the data as an argument to the application or prompt the user to enter a message.
+e Receive a reply from the server and display it on the screen.
+f Handle exceptions as needed.
+g Close the TLS socket to release resources, including the TLS connection between the client and server.
+3 Implement a TLS server. 
+a Create a secure context using your certificate and private key.
+b Wrap the TCP server socket to support TLS.
+c Accept and respond to client requests.
+d Modularize your logic (use functions where possible).
+e Handle exceptions as needed.
+f Close connections gracefully.
+4 Capture the TLS session using Wireshark. 
+a Take a screenshot of the TLS packet capture.
+b Identify key TLS handshake elements.
+c Can you see the actual message contents? Compare this to your TCP capture from Phase 1.
+Part B: Reflection
+In this section, youll reflect on your implementation and compare TCP and TLS based on your experience.
+1 Answer the following questions in a short (one to two pages) summary or annotated notebook in Word or PDF format:
+a How do TCP and TLS differ in their socket creation and setup?
+b How do they handle connection reliability, ordering and encryption?
+c What challenges did you face in implementing TLS?
+d What are the trade-offs when choosing TLS over TCP?
+e Does TLS effectively address the security weaknesses you observed in TCP?
+2 Include the following items with your submission:
+ A screenshot from your TLS Wireshark capture.
+ References to your code and/or console output, where appropriate.
+
+Submission
+1 Upload your code (client and server for both protocols) to GitHub.
+2 Submit the following to Brightspace:
+ Link to your GitHub repository
+ Reflection document (Word or PDF)
+ Wireshark screenshot (TLS)
+3 Check the course calendar for the due date. 

@@ -1,0 +1,38 @@
+TCP Capture Analysis
+====================
+
+Protocol: TCP (Transmission Control Protocol)
+Port: 12346
+
+Packet Flow:
+1. Connection Establishment (3-way handshake):
+   - Client -> Server: SYN
+   - Server -> Client: SYN-ACK
+   - Client -> Server: ACK
+
+2. Data Transfer:
+   - Client -> Server: Registration JSON data (PSH-ACK)
+   - Server -> Client: ACK
+   - Client -> Server: Login JSON data (PSH-ACK)
+   - Server -> Client: ACK + Response data (PSH-ACK)
+   - Client -> Server: ACK
+
+3. Connection Termination:
+   - Either side can initiate with FIN
+
+Key TCP Characteristics:
+- Connection-oriented protocol
+- Reliable data delivery
+- Guaranteed ordering
+- Flow control and congestion control
+- Higher overhead than UDP
+- Suitable for persistent connections
+
+Header Fields:
+- Source Port: Client port
+- Destination Port: 12346
+- Sequence Number: Data ordering
+- Acknowledgment Number: Expected next sequence
+- Flags: SYN, ACK, PSH, FIN, RST, URG
+- Window Size: Flow control
+- Checksum: Error detection

@@ -1,0 +1,28 @@
+UDP Capture Analysis
+====================
+
+Protocol: UDP (User Datagram Protocol)
+Port: 12345
+
+Packet Flow:
+1. Client -> Server: Registration request
+   - Source: Random port -> Destination: 12345
+   - Data: JSON registration message
+   - No connection establishment (connectionless)
+
+2. Server -> Client: Registration response
+   - Source: 12345 -> Destination: Client port
+   - Data: JSON success/failure message
+
+Key UDP Characteristics:
+- Connectionless protocol
+- No handshake required
+- No guaranteed delivery
+- Lower overhead than TCP
+- Suitable for simple request-response operations
+
+Header Fields:
+- Source Port: Client port
+- Destination Port: 12345
+- Length: UDP packet length
+- Checksum: Error detection

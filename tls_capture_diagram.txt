@@ -1,0 +1,37 @@
+TLS Capture Analysis
+====================
+
+Protocol: TLS (Transport Layer Security) over TCP
+Port: 12347
+
+Packet Flow:
+1. TCP Connection Establishment (3-way handshake):
+   - Client -> Server: SYN
+   - Server -> Client: SYN-ACK
+   - Client -> Server: ACK
+
+2. TLS Handshake:
+   - Client -> Server: Client Hello
+   - Server -> Client: Server Hello + Certificate + Server Hello Done
+   - Client -> Server: Client Key Exchange + Change Cipher Spec + Encrypted Handshake Message
+   - Server -> Client: Change Cipher Spec + Encrypted Handshake Message
+
+3. Encrypted Data Transfer:
+   - All application data encrypted
+   - Cannot see plaintext content in capture
+
+4. Connection Termination:
+   - TLS Close Notify
+   - TCP FIN handshake
+
+Key TLS Characteristics:
+- Provides encryption, authentication, and data integrity
+- Built on top of TCP
+- Protects against eavesdropping and tampering
+- Uses certificates for server authentication
+- Higher overhead than plain TCP due to encryption
+
+Security Features:
+- Confidentiality: Data encryption
+- Integrity: Message authentication codes
+- Authentication: Certificate-based verification
